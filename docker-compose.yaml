@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  crawler:
+    build: .
+    environment:
+      - CONFIG_PATH=/etc/crawler_config.yaml
+    volumes:
+      - ./assets:/app/assets
