@@ -1,8 +1,8 @@
 import logging
 
-from .config import config
+from .config import Config
 
-conf = config.get("logger")
+conf = Config().get("logger")
 logger = logging.getLogger(conf.get("name"))
 
 

@@ -2,12 +2,26 @@ from os import environ
 
 import yaml
 
-CONFIG_PATH = environ.get("CONFIG_PATH", "../assets/config.yaml")
+from .constants import DEFAULT_CONFIG_PATH
 
 
-def load_config():
-    with open(CONFIG_PATH) as f:
-        return yaml.safe_load(f)
+class Config:
+    __instance = None
 
+    def __init__(self):
+        self.config_path = environ.get("CONFIG_PATH", DEFAULT_CONFIG_PATH)
+        if Config.__instance is None:
+            self.values: dict = self.load_config()
+            self.__instance = self
+        else:
+            self.values: dict = self.__instance.values
 
-config = load_config()
+    def load_config(self):
+        with open(self.config_path) as f:
+            return yaml.safe_load(f)
+
+    def all(self) -> dict:
+        return self.values
+
+    def get(self, key):
+        return self.values.get(key, {})
