@@ -1,9 +1,9 @@
-from lib.logger import setup_logger, logger
+from lib.logger import Logger
 from lib.executor import CrawlerExecutor
 
 # Set up logger
-setup_logger()
+Logger.setup()
 
 # let's start
-logger.info("Starting Pastebin Crawler")
+Logger.logger().info("Starting Pastebin Crawler")
 CrawlerExecutor().run()

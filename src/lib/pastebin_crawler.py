@@ -15,8 +15,8 @@ from .paste import Paste
 
 class PastebinCrawler:
     def __init__(self) -> None:
-        self.db = DB.get_instance()
-        self.config = Config().get("crawler")
+        self.db = DB.instance()
+        self.config = Config.instance().get("crawler")
         self.pool = ThreadPoolExecutor()
         self.interval = self.config.get("interval", DEFAULT_INTERVAL)
 

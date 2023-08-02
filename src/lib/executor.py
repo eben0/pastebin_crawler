@@ -1,7 +1,7 @@
 import traceback
 
 from .pastebin_crawler import PastebinCrawler
-from .timer import RepeatTimer
+from .tools import RepeatTimer
 from .logger import logger
 
 

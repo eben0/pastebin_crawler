@@ -10,11 +10,13 @@ class Config:
 
     def __init__(self):
         self.config_path = environ.get("CONFIG_PATH", DEFAULT_CONFIG_PATH)
-        if Config.__instance is None:
-            self.values: dict = self.load_config()
-            self.__instance = self
-        else:
-            self.values: dict = self.__instance.values
+        self.values: dict = self.load_config()
+
+    @staticmethod
+    def instance():
+        if not Config.__instance:
+            Config.__instance = Config()
+        return Config.__instance
 
     def load_config(self):
         with open(self.config_path) as f:
