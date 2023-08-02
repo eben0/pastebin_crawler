@@ -5,5 +5,5 @@ from lib.executor import CrawlerExecutor
 Logger.setup()
 
 # let's start
-Logger.logger().info("Starting Pastebin Crawler")
+Logger.get().info("Starting Pastebin Crawler")
 CrawlerExecutor().run()

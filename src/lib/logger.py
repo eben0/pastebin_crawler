@@ -8,7 +8,7 @@ logger = logging.getLogger(config.get("name"))
 
 class Logger:
     @staticmethod
-    def logger():
+    def get():
         return logger
 
     @staticmethod
